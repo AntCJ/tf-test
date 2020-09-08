@@ -11,11 +11,13 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface BlogMapper extends EntityMapper<BlogDTO, Blog> {
 
-    @Mapping(source = "user.id", target = "userId")
+    @Override
+	@Mapping(source = "user.id", target = "userId")
     @Mapping(source = "user.login", target = "userLogin")
     BlogDTO toDto(Blog blog);
 
-    @Mapping(source = "userId", target = "user")
+    @Override
+	@Mapping(source = "userId", target = "user")
     Blog toEntity(BlogDTO blogDTO);
 
     default Blog fromId(Long id) {

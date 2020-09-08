@@ -11,11 +11,13 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {BlogMapper.class})
 public interface EntryMapper extends EntityMapper<EntryDTO, Entry> {
 
-    @Mapping(source = "blog.id", target = "blogId")
+    @Override
+	@Mapping(source = "blog.id", target = "blogId")
     @Mapping(source = "blog.name", target = "blogName")
     EntryDTO toDto(Entry entry);
 
-    @Mapping(source = "blogId", target = "blog")
+    @Override
+	@Mapping(source = "blogId", target = "blog")
     Entry toEntity(EntryDTO entryDTO);
 
     default Entry fromId(Long id) {

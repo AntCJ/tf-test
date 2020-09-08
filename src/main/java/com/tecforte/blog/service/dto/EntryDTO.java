@@ -55,6 +55,10 @@ public class EntryDTO implements Serializable {
     public Emoji getEmoji() {
         return emoji;
     }
+    
+    public String getEmojiEmotion() {
+    	return emoji.getEmotion();
+    }
 
     public void setEmoji(Emoji emoji) {
         this.emoji = emoji;

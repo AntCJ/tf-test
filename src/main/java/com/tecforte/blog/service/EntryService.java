@@ -44,6 +44,7 @@ public class EntryService {
         entry = entryRepository.save(entry);
         return entryMapper.toDto(entry);
     }
+    
 
     /**
      * Get all the entries.
@@ -71,6 +72,7 @@ public class EntryService {
         return entryRepository.findById(id)
             .map(entryMapper::toDto);
     }
+
 
     /**
      * Delete the entry by id.

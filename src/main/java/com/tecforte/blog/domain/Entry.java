@@ -34,8 +34,7 @@ public class Entry extends AbstractAuditingEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "emoji", nullable = false)
     private Emoji emoji;
-
-
+    
     @Lob
     @Type(type = "org.hibernate.type.TextType")
     @Column(name = "content", nullable = false)
@@ -69,6 +68,10 @@ public class Entry extends AbstractAuditingEntity implements Serializable {
 
     public Emoji getEmoji() {
         return emoji;
+    }
+    
+    public String getEmojiEmotion() {
+    	return emoji.getEmotion();
     }
 
     public Entry emoji(Emoji emoji) {

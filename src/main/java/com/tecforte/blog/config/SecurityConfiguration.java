@@ -3,8 +3,6 @@ package com.tecforte.blog.config;
 import com.tecforte.blog.security.*;
 import com.tecforte.blog.security.jwt.*;
 
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;

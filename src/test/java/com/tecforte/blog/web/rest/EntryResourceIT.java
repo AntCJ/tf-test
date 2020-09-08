@@ -3,6 +3,7 @@ package com.tecforte.blog.web.rest;
 import com.tecforte.blog.BlogApp;
 import com.tecforte.blog.domain.Entry;
 import com.tecforte.blog.repository.EntryRepository;
+import com.tecforte.blog.service.BlogService;
 import com.tecforte.blog.service.EntryService;
 import com.tecforte.blog.service.dto.EntryDTO;
 import com.tecforte.blog.service.mapper.EntryMapper;
@@ -19,7 +20,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
@@ -55,6 +55,9 @@ public class EntryResourceIT {
 
     @Autowired
     private EntryService entryService;
+    
+    @Autowired
+    private BlogService blogService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -78,7 +81,7 @@ public class EntryResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EntryResource entryResource = new EntryResource(entryService);
+        final EntryResource entryResource = new EntryResource(entryService, blogService);
         this.restEntryMockMvc = MockMvcBuilders.standaloneSetup(entryResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
